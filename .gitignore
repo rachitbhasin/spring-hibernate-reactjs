@@ -37,7 +37,7 @@ src/main/webapp/react-app/coverage*
 src/main/webapp/react-app/npm-debug.log
 
 // Javascript bundle
-src/main/webapp/js*
+src/main/webapp/static/js/*
 
 // CSS bundle
-src/main/webapp/css*
+src/main/webapp/static/css/*

@@ -7,7 +7,7 @@
     "start": "cross-env NODE_ENV=development BABEL_ENV=development webpack --env=development  --progress",
     "prod": "npm run clean && npm run build-prod",
     "build-prod": "cross-env NODE_ENV=production BABEL_ENV=production webpack --env=production -p --progress",
-    "clean": "cd ../static && rd /s /q js css",
+    "clean": "cd ../static && del /S /Q js\\* css\\*",
     "test:clean": "rd /s /q coverage",
     "test": "jest",
     "test:coverage": "jest --coverage",
@@ -38,11 +38,9 @@
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.0",
     "url-loader": "^0.6.2",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.10.0"
+    "webpack": "^3.10.0"
   },
   "dependencies": {
-    "babel-preset-react-hmre": "^1.1.1",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
