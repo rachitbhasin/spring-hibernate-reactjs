@@ -1,0 +1,36 @@
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+target
+
+// Node error logs
+npm-debug.log
+
+// Third party dependencies
+src/main/webapp/react-app/node_modules*
+
+// Test coverage
+src/main/webapp/react-app/coverage*
+
+// Node error logs
+src/main/webapp/react-app/npm-debug.log

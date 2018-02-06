@@ -1,0 +1,5 @@
+http://www.boraji.com/spring-mvc-4-hibernate-5-restful-crud-operations-example
+
+https://www.programcreek.com/java-api-examples/index.php?source_dir=debop4j-master/debop4j-search/src/test/java/kr/debop4j/search/AppConfig.java#
+
+http://websystique.com/spring-security-tutorial/
