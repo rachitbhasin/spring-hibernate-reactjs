@@ -4,7 +4,7 @@
   "description": "React Redux starter project",
   "main": "src/js/index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development BABEL_ENV=development webpack --env=development  --progress --watch",
+    "start": "cross-env NODE_ENV=development BABEL_ENV=development webpack --env=development  --progress",
     "prod": "npm run clean && npm run build-prod",
     "build-prod": "cross-env NODE_ENV=production BABEL_ENV=production webpack --env=production -p --progress",
     "clean": "cd ../static && rd /s /q js css",

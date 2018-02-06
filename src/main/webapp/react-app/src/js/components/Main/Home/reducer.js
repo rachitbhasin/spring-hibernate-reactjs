@@ -2,7 +2,7 @@ import dc from "deep-copy";
 import * as type from './actionTypes';
 
 export const initialState = {
-    names: ["earth", "wind", "fire", "water", "heart"],
+    names: ["earth", "sky", "fire", "water", "air"],
     query: ""
 };
 

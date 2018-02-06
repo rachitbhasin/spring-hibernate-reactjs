@@ -28,9 +28,16 @@ npm-debug.log
 
 // Third party dependencies
 src/main/webapp/react-app/node_modules*
+src/main/webapp/react-app/node*
 
 // Test coverage
 src/main/webapp/react-app/coverage*
 
 // Node error logs
 src/main/webapp/react-app/npm-debug.log
+
+// Javascript bundle
+src/main/webapp/js*
+
+// CSS bundle
+src/main/webapp/css*
