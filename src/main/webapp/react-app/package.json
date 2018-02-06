@@ -7,7 +7,7 @@
     "start": "cross-env NODE_ENV=development BABEL_ENV=development webpack --env=development  --progress --watch",
     "prod": "npm run clean && npm run build-prod",
     "build-prod": "cross-env NODE_ENV=production BABEL_ENV=production webpack --env=production -p --progress",
-    "clean": "rd /s /q dist",
+    "clean": "cd ../static && rd /s /q js css",
     "test:clean": "rd /s /q coverage",
     "test": "jest",
     "test:coverage": "jest --coverage",

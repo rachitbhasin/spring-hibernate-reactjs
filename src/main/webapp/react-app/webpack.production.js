@@ -6,7 +6,7 @@ const webpack = require('webpack');
 // HTML
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
     template: `./src/index.html`,
-    filename: '../WEB-INF/views/index.jsp',
+    filename: './WEB-INF/views/index.jsp',
     inject: 'body',
     minify: {
         collapseWhitespace: true,
@@ -28,12 +28,12 @@ const UglifyJsPluginConfig = new webpack.optimize.UglifyJsPlugin({
 });
 
 // css
-const ExtractTextPluginConfig = new ExtractTextPlugin("css/[name].bundle.css");
+const ExtractTextPluginConfig = new ExtractTextPlugin("static/css/[name].bundle.css");
 
 // Create separate bundle for the node_modules
 const CommonsChunkPluginConfig = new webpack.optimize.CommonsChunkPlugin({
     name: 'vendor',
-    filename: 'js/[name].vendor.js',
+    filename: 'static/js/[name].bundle.js',
     minChunks (module) {
         return module.context &&
             module.context.indexOf('node_modules') >= 0;
@@ -43,10 +43,10 @@ const CommonsChunkPluginConfig = new webpack.optimize.CommonsChunkPlugin({
 module.exports = {
     entry: ['./src/js/index.js','./src/scss/index.scss'],
     output: {
-        path: path.resolve(__dirname, "./../static"),
-        filename: "js/[name].bundle.js",
+        path: path.resolve(__dirname, "./../"),
+        filename: "static/js/[name].bundle.js",
         publicPath: '/',
-        sourceMapFilename: '[name].bundle.map'
+        sourceMapFilename: 'static/js/[name].bundle.map'
     },
     devtool: 'hidden-source-map',
     module: {

@@ -6,7 +6,7 @@ const webpack = require('webpack');
 // HTML
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
     template: './src/index.html',
-    filename: '../WEB-INF/views/index.jsp',
+    filename: './WEB-INF/views/index.jsp',
     inject: 'body'
 });
 
@@ -19,7 +19,7 @@ module.exports = {
         path: path.resolve(__dirname, "./../"),
         filename: "static/js/[name].bundle.js",
         publicPath: '/',
-        sourceMapFilename: '[name].map'
+        sourceMapFilename: 'static/js/[name].bundle.map'
     },
     devtool: 'cheap-module-eval-source-map',
     module: {
