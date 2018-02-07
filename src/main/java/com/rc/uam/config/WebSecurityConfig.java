@@ -32,7 +32,7 @@ import com.rc.uam.service.impl.CustomUserDetailsService;
  *
  */
 @Configuration
-@EnableWebSecurity
+@EnableWebSecurity(debug=true)
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
@@ -71,8 +71,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
 			.authorizeRequests()
 			.antMatchers(
-				HttpMethod.GET, 
-				"/", 
+				HttpMethod.GET,
 				"/*.html", 
 				"/favicon.ico", 
 				"/**/*.html", 
@@ -80,6 +79,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				"/**/*.js"
 			).permitAll()
 			.antMatchers("/auth/**").permitAll()
+			.antMatchers("/api/*").authenticated()
 			.anyRequest().authenticated().and()
 			.addFilterBefore(new TokenAuthenticationFilter(tokenHelper, jwtUserDetailsService), BasicAuthenticationFilter.class);
 

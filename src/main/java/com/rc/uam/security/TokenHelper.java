@@ -114,11 +114,11 @@ public class TokenHelper {
 
     private String generateAudience(Device device) {
         String audience = AUDIENCE_UNKNOWN;
-        if (device.isNormal()) {
+        if (device != null && device.isNormal()) {
             audience = AUDIENCE_WEB;
-        } else if (device.isTablet()) {
+        } else if (device != null && device.isTablet()) {
             audience = AUDIENCE_TABLET;
-        } else if (device.isMobile()) {
+        } else if (device != null && device.isMobile()) {
             audience = AUDIENCE_MOBILE;
         }
         return audience;
@@ -138,7 +138,7 @@ public class TokenHelper {
     }
 
     private Date generateExpirationDate(Device device) {
-        long expiresIn = device.isTablet() || device.isMobile() ? MOBILE_EXPIRES_IN : EXPIRES_IN;
+        long expiresIn = device != null && (device.isTablet() || device.isMobile()) ? MOBILE_EXPIRES_IN : EXPIRES_IN;
         return new Date(timeProvider.now().getTime() + expiresIn * 1000);
     }
 
