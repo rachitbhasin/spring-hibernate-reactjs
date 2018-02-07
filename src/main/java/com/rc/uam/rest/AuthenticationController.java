@@ -32,7 +32,6 @@ import com.rc.uam.provider.DeviceProvider;
 import com.rc.uam.security.JwtAuthenticationRequest;
 import com.rc.uam.security.TokenHelper;
 import com.rc.uam.service.impl.CustomUserDetailsService;
-import com.rc.uam.utility.CustomUtil;
 
 /**
  * @author Rachit Bhasin

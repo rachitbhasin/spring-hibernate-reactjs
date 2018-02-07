@@ -29,7 +29,7 @@ public class TokenBasedAuthentication extends AbstractAuthenticationToken {
 
     @Override
     public boolean isAuthenticated() {
-        return true;
+        return false;
     }
 
     @Override
