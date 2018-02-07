@@ -1,0 +1,8 @@
+app:
+  name: user-assessment.module
+
+jwt:
+  header: Authorization
+  expires_in: 300
+  mobile_expires_in: 600
+  secret: queenvictoria

@@ -19,7 +19,7 @@ import com.rc.uam.service.UserService;
  *
  */
 @Service
-@Transactional(readOnly = true)
+@Transactional
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDao userDao;
@@ -31,13 +31,13 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User get(Long id) throws UamException {
+	public User find(Long id) throws UamException {
 		return userDao.get(id);
 	}
 	
 	@Override
-	public User getByField(String field, String value) throws UamException {
-		return userDao.getByField(field, value);
+	public User findByField(String field, String value) throws UamException {
+		return userDao.findByField(field, value);
 	}
 	
 	@Override

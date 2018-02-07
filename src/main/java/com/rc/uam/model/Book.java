@@ -8,8 +8,12 @@ import javax.persistence.Table;
 
 import com.rc.uam.model.base.BaseEntity;
 
+/**
+ * @author Rachit Bhasin
+ *
+ */
 @Entity
-@Table(name = "book")
+@Table(name = "BOOK")
 public class Book extends BaseEntity {
 
 	private static final long serialVersionUID = 1L;

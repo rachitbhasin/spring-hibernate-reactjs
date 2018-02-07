@@ -26,6 +26,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.rc.uam.interceptor.SaveOrUpdateInterceptor;
 
+/**
+ * @author Rachit Bhasin
+ *
+ */
 @Configuration
 @PropertySource("classpath:db.properties")
 @EnableTransactionManagement

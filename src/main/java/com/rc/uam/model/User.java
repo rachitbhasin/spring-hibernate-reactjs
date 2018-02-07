@@ -1,5 +1,12 @@
 package com.rc.uam.model;
 
+import java.sql.Timestamp;
+import java.util.Collection;
+import java.util.List;
+
+import org.joda.time.DateTime;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -7,11 +14,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.rc.uam.model.base.BaseEntity;
 
 /**
@@ -19,9 +29,9 @@ import com.rc.uam.model.base.BaseEntity;
  *
  */
 @Entity
-@Table(name = "user")
-public class User extends BaseEntity {
-	
+@Table(name = "USERS")
+public class User extends BaseEntity implements UserDetails {
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -29,146 +39,138 @@ public class User extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(name = "username")
+	private String username;
+
+	@JsonIgnore
+	@Column(name = "password")
+	private String password;
+
 	@Column(name = "first_name")
 	private String firstName;
 
 	@Column(name = "last_name")
 	private String lastName;
 
-	@Column(unique = true)
+	@Column(name = "email")
 	private String email;
 
-	private String password;
+	@Column(name = "phone_number")
+	private String phoneNumber;
 
-	@Transient
-	private String confirmPassword;
+	@Column(name = "enabled")
+	private boolean enabled = true;
+	
+	@Column(name = "deleted")
+	private boolean deleted = false;
 
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumns({ @JoinColumn(name = "role_id", referencedColumnName = "id") })
-	private Role role;
+	@Column(name = "last_password_reset_date")
+	private Timestamp lastPasswordResetDate;
 
-	private Integer status = 1;
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinTable(name = "user_authority", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "authority_id", referencedColumnName = "id"))
+	private List<Authority> authorities;
 
-	private Boolean deleted = false;
-
-	/**
-	 * @return the id
-	 */
 	public Long getId() {
 		return id;
 	}
 
-	/**
-	 * @param id
-	 *            the id to set
-	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
 
-	/**
-	 * @return the firstName
-	 */
-	public String getFirstName() {
-		return firstName;
+	public String getUsername() {
+		return username;
 	}
 
-	/**
-	 * @param firstName
-	 *            the firstName to set
-	 */
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	/**
-	 * @return the lastName
-	 */
-	public String getLastName() {
-		return lastName;
-	}
-
-	/**
-	 * @param lastName
-	 *            the lastName to set
-	 */
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	/**
-	 * @return the email
-	 */
-	public String getEmail() {
-		return email;
-	}
-
-	/**
-	 * @param email
-	 *            the email to set
-	 */
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	/**
-	 * @return the password
-	 */
 	public String getPassword() {
 		return password;
 	}
 
-	/**
-	 * @param password
-	 *            the password to set
-	 */
 	public void setPassword(String password) {
+		Timestamp now = new Timestamp(DateTime.now().getMillis());
+		this.setLastPasswordResetDate(now);
 		this.password = password;
 	}
 
-	/**
-	 * @return the role
-	 */
-	public Role getRole() {
-		return role;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	/**
-	 * @param role
-	 *            the role to set
-	 */
-	public void setRole(Role role) {
-		this.role = role;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	/**
-	 * @return the status
-	 */
-	public Integer getStatus() {
-		return status;
+	public String getLastName() {
+		return lastName;
 	}
 
-	/**
-	 * @param status
-	 *            the status to set
-	 */
-	public void setStatus(Integer status) {
-		this.status = status;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
-	/**
-	 * @return the deleted
-	 */
-	public Boolean getDeleted() {
-		return deleted;
+	public void setAuthorities(List<Authority> authorities) {
+		this.authorities = authorities;
 	}
 
-	/**
-	 * @param deleted
-	 *            the deleted to set
-	 */
-	public void setDeleted(Boolean deleted) {
-		this.deleted = deleted;
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return this.authorities;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public Timestamp getLastPasswordResetDate() {
+		return lastPasswordResetDate;
+	}
+
+	public void setLastPasswordResetDate(Timestamp lastPasswordResetDate) {
+		this.lastPasswordResetDate = lastPasswordResetDate;
+	}
+
+	@JsonIgnore
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@JsonIgnore
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@JsonIgnore
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
 	}
 
 	@Override

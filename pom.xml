@@ -28,6 +28,23 @@
 	</dependencyManagement>
 
 	<dependencies>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.9.9</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.6.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.mobile</groupId>
+			<artifactId>spring-mobile-device</artifactId>
+			<version>1.1.5.RELEASE</version>
+		</dependency>
 		<!-- Servlet API -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -140,17 +157,17 @@
 							<yarnVersion>v1.3.2</yarnVersion>
 						</configuration>
 					</execution>
-					
+
 					<execution>
-                        <id>yarn install</id>
-                        <goals>
-                            <goal>yarn</goal>
-                        </goals>
-                        <configuration>
-                            <arguments>install</arguments>
-                        </configuration>
-                    </execution>
-					
+						<id>yarn install</id>
+						<goals>
+							<goal>yarn</goal>
+						</goals>
+						<configuration>
+							<arguments>install</arguments>
+						</configuration>
+					</execution>
+
 					<execution>
 						<id>yarn run clean</id>
 						<goals>
@@ -160,7 +177,7 @@
 							<arguments>run clean</arguments>
 						</configuration>
 					</execution>
-					
+
 					<execution>
 						<id>yarn run start</id>
 						<goals>

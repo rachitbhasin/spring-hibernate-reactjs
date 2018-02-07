@@ -2,6 +2,10 @@ package com.rc.uam.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+/**
+ * @author Rachit Bhasin
+ *
+ */
 public class UamAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	   @Override

@@ -14,12 +14,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.rc.uam.model.User;
 import com.rc.uam.model.auditable.Auditable;
 
+
+/**
+ * @author Rachit Bhasin
+ *
+ */
 @MappedSuperclass
 public class BaseEntity implements Auditable, Serializable {
 
-	/**
-	 *
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@OneToOne()

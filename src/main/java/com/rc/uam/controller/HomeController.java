@@ -6,23 +6,19 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.rc.uam.model.User;
-import com.rc.uam.utility.CustomUtil;
-
+/**
+ * @author Rachit Bhasin
+ *
+ */
 @Controller
 public class HomeController {
 	
-	private static final Logger logger = Logger.getLogger(HomeController.class);
+	private final Logger logger = Logger.getLogger(this.getClass());
 	
-	@RequestMapping(value = { "/*", "/*/*" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/app/*", "/app/*/*" }, method = RequestMethod.GET)
     public String homePage(ModelMap model) {
-		logger.info("User is Logged in: " + CustomUtil.isUserLoggedIn());
-		User user = CustomUtil.getLoggedInUser();
-		if(user!=null) {
-			logger.info("Logged in as: " + user.getEmail());
-		}
+		logger.info("Loading index page for SPA application");
 		
-        model.addAttribute("greeting", "Hi, Welcome to mysite");
         return "index";
     }
 }

@@ -4,6 +4,10 @@ import java.util.List;
 
 import com.rc.uam.model.Book;
 
+/**
+ * @author Rachit Bhasin
+ *
+ */
 public interface BookService {
 	long save(Book book);
 	Book get(long id);

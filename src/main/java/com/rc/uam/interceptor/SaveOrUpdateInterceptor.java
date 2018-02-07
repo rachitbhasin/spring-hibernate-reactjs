@@ -15,7 +15,7 @@ import com.rc.uam.utility.CustomUtil;
  * this class is used to manage audit fields like createdby, modifiedby,
  * createdon, modifiedon
  *
- * @author rcs
+ * @author Rachit Bhasin
  *
  */
 

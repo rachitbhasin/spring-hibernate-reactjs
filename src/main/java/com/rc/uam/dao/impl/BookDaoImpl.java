@@ -15,6 +15,10 @@ import org.springframework.stereotype.Repository;
 import com.rc.uam.dao.BookDao;
 import com.rc.uam.model.Book;
 
+/**
+ * @author Rachit Bhasin
+ *
+ */
 @Repository
 public class BookDaoImpl implements BookDao {
 

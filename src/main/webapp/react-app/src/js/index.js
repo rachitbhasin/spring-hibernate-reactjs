@@ -6,7 +6,7 @@ import store from './stores';
 import App from './components';
 
 render((
-    <BrowserRouter>
+    <BrowserRouter basename="/app">
         <Provider store={ store }>
             <App/>
         </Provider>

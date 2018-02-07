@@ -35,4 +35,6 @@ public interface Constants {
 	String INACTIVATE = "0";
 
 	String EMAIL = "email";
+	
+	String USERNAME = "username"; 
 }

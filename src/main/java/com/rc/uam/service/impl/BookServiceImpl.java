@@ -10,8 +10,12 @@ import com.rc.uam.dao.BookDao;
 import com.rc.uam.model.Book;
 import com.rc.uam.service.BookService;
 
+/**
+ * @author Rachit Bhasin
+ *
+ */
 @Service
-@Transactional(readOnly = true)
+@Transactional
 public class BookServiceImpl implements BookService {
 
    @Autowired

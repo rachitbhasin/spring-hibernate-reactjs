@@ -13,6 +13,10 @@ import com.rc.uam.dao.AbstractDao;
 import com.rc.uam.dao.UserDao;
 import com.rc.uam.model.User;
 
+/**
+ * @author Rachit Bhasin
+ *
+ */
 @Repository
 public class UserDaoImpl extends AbstractDao<Long, User> implements UserDao {
 
@@ -28,7 +32,7 @@ public class UserDaoImpl extends AbstractDao<Long, User> implements UserDao {
 	}
 
 	@Override
-	public User getByField(String field, String value) {
+	public User findByField(String field, String value) {
 		//**creating CriteriaBuilder**
 		CriteriaBuilder builder = getCriteriaBuilder();
 		CriteriaQuery<User> criteria = builder.createQuery(User.class);

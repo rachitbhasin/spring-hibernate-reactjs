@@ -10,6 +10,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+/**
+ * @author Rachit Bhasin
+ *
+ */
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = { "com.rc.uam" })

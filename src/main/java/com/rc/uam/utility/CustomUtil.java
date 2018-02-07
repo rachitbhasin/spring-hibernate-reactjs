@@ -1,7 +1,11 @@
 package com.rc.uam.utility;
 
+import java.util.Collection;
+import java.util.Iterator;
+
 import org.springframework.security.core.context.SecurityContextHolder;
 
+import com.rc.uam.model.Authority;
 import com.rc.uam.model.User;
 
 
@@ -29,9 +33,14 @@ public final class CustomUtil {
 		boolean b = false;
 
 		if (getLoggedInUser() != null) {
-			if (getLoggedInUser().getRole().getName().equalsIgnoreCase(
-					Constants.ROLE_ADMIN)) {
-				b = true;
+			User user = (User)getLoggedInUser();
+			Collection<Authority> auth = (Collection<Authority>) user.getAuthorities();
+			Iterator<Authority> i = auth.iterator();
+			if (i.hasNext()) {
+				Authority authority = i.next();
+				if(authority.getAuthority() == Constants.ROLE_ADMIN) {
+					b = true;
+				}
 			}
 		}
 
