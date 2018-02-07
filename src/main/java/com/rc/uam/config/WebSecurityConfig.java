@@ -70,37 +70,29 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 			.exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
 			.authorizeRequests()
-			.antMatchers(
-				HttpMethod.GET,
-				"/*.html", 
-				"/favicon.ico", 
-				"/**/*.html", 
-				"/**/*.css",
-				"/**/*.js"
-			).permitAll()
-			.antMatchers("/auth/**").permitAll()
-			.antMatchers("/api/*").authenticated()
+			.antMatchers("/static/**").permitAll()
+			.antMatchers("/app/**").permitAll()
+			.antMatchers("/auth/login").permitAll()
 			.anyRequest().authenticated().and()
 			.addFilterBefore(new TokenAuthenticationFilter(tokenHelper, jwtUserDetailsService), BasicAuthenticationFilter.class);
 
 		http.csrf().disable();
 	}
 	
-	@Override
-    public void configure(WebSecurity web) throws Exception {
-        // TokenAuthenticationFilter will ignore the below paths
-        web.ignoring().antMatchers(
-                HttpMethod.POST,
-                "/auth/login"
-        );
-        web.ignoring().antMatchers(
-                HttpMethod.GET,
-                "/",
-                "/*.html",
-                "/favicon.ico",
-                "/**/*.html",
-                "/**/*.css",
-                "/**/*.js"
-            );
-    }
+//	@Override
+//    public void configure(WebSecurity web) throws Exception {
+//        // TokenAuthenticationFilter will ignore the below paths
+//        web.ignoring().antMatchers(
+//                HttpMethod.POST,
+//                "/auth/login"
+//        );
+//        web.ignoring().antMatchers(
+//                HttpMethod.GET,
+//                "/*.html",
+//                "/favicon.ico",
+//                "/**/*.html",
+//                "/**/*.css",
+//                "/**/*.js"
+//            );
+//    }
 }

@@ -9,6 +9,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,7 @@ import com.rc.uam.provider.DeviceProvider;
 import com.rc.uam.security.JwtAuthenticationRequest;
 import com.rc.uam.security.TokenHelper;
 import com.rc.uam.service.impl.CustomUserDetailsService;
+import com.rc.uam.utility.CustomUtil;
 
 /**
  * @author Rachit Bhasin
@@ -41,6 +43,8 @@ import com.rc.uam.service.impl.CustomUserDetailsService;
 @RequestMapping( value = "/auth", produces = MediaType.APPLICATION_JSON_VALUE )
 public class AuthenticationController {
 
+	private final Logger logger = Logger.getLogger(this.getClass());
+	
     @Autowired
     TokenHelper tokenHelper;
 
@@ -56,6 +60,7 @@ public class AuthenticationController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(
             @RequestBody JwtAuthenticationRequest authenticationRequest,
+            HttpServletRequest request,
             HttpServletResponse response,
             Device device
     ) throws AuthenticationException, IOException {
@@ -67,10 +72,14 @@ public class AuthenticationController {
                         authenticationRequest.getPassword()
                 )
         );
-
+        
+        
         // Inject into security context
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
+        if(device == null) {
+        	device = deviceProvider.getCurrentDevice(request);
+        }
         // token creation
         User user = (User)authentication.getPrincipal();
         String jws = tokenHelper.generateToken( user.getUsername(), device);

@@ -2,7 +2,6 @@ package com.rc.uam.provider;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mobile.device.Device;
 import org.springframework.mobile.device.DeviceUtils;
 import org.springframework.stereotype.Component;
@@ -13,14 +12,14 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class DeviceProvider {
-
-	@Autowired
-	DeviceDummy dDevice;
 	
     public Device getCurrentDevice(HttpServletRequest request) {
     	Device device = DeviceUtils.getCurrentDevice(request);
+    	DeviceDummy dummy = null;
     	if(device == null) {
-    		device = dDevice;
+    		dummy = new DeviceDummy();
+			dummy.setNormal(true);
+			device = dummy;
     	}
         return device;
     }
