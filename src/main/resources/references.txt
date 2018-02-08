@@ -7,3 +7,9 @@ http://websystique.com/spring-security-tutorial/
 https://github.com/eugenp/tutorials
 
 http://www.baeldung.com/spring-security-basic-authentication
+
+https://dzone.com/articles/secure-rest-services-using
+
+https://github.com/bfwg/springboot-jwt-starter
+
+https://sdqali.in/blog/2016/07/07/jwt-authentication-with-spring-web---part-4/
