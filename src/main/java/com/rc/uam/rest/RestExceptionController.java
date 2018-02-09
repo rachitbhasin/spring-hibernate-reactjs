@@ -17,11 +17,21 @@ public class RestExceptionController {
 	@ResponseBody
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     protected ResponseError handleConflict(Exception ex) {     
-        return new ResponseError(
-        		HttpStatus.INTERNAL_SERVER_ERROR.value(), 
-        		ex.getMessage(), ex.getClass().getName(), 
+        
+		String message;
+        if(ex.getCause() != null) {
+            message = ex.getCause().getMessage();
+        } else {
+            message = ex.getMessage();
+        }
+		
+		return new ResponseError(
+        		HttpStatus.INTERNAL_SERVER_ERROR.value(),
+        		ex.getStackTrace()[0].getLineNumber(),
+        		message, 
+        		ex.getClass().getName(), 
         		ex.getStackTrace()[0].getMethodName(), 
         		ex.getStackTrace()[0].getFileName(), 
-        		ex.getStackTrace()[0].getLineNumber());
+        		ex.getStackTrace());
     }
 }

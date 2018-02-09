@@ -29,6 +29,7 @@ public final class CustomUtil {
 	// .getPrincipal();
 	// }
 
+	@SuppressWarnings("unchecked")
 	public static boolean isAdmin() {
 		boolean b = false;
 

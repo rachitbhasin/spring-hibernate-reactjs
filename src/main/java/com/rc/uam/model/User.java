@@ -147,6 +147,14 @@ public class User extends BaseEntity implements UserDetails {
 		this.enabled = enabled;
 	}
 
+	public boolean isDeleted() {
+		return deleted;
+	}
+
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
+	}
+
 	public Timestamp getLastPasswordResetDate() {
 		return lastPasswordResetDate;
 	}

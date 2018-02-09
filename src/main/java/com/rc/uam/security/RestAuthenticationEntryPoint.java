@@ -44,10 +44,13 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
         byte[] body = new ObjectMapper()
                 .writeValueAsBytes(new ResponseError(
                 		HttpStatus.INTERNAL_SERVER_ERROR.value(), 
-                		authException.getMessage(), authException.getClass().getName(), 
+                		authException.getStackTrace()[0].getLineNumber(),
+                		message, 
+                		authException.getClass().getName(), 
                 		authException.getStackTrace()[0].getMethodName(), 
-                		authException.getStackTrace()[0].getFileName(), 
-                		authException.getStackTrace()[0].getLineNumber()));
+                		authException.getStackTrace()[0].getFileName(),
+                		authException.getStackTrace()
+                		));
         response.getOutputStream().write(body);
 
 	}
