@@ -13,10 +13,13 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 // css
 const ExtractTextPluginConfig = new ExtractTextPlugin("static/css/[name].bundle.css");
 
-module.exports = {
+const MODE = `${process.env.MODE}`;
+console.log(MODE);
+
+let config = {
     entry: ['./src/js/index.js','./src/scss/index.scss'],
     output: {
-        path: path.resolve(__dirname, "./../"),
+        path: path.resolve(__dirname, "./../../../../target/user-assessment-module-0.0.1-SNAPSHOT/"),
         filename: "static/js/[name].bundle.js",
         publicPath: '/',
         sourceMapFilename: 'static/js/[name].bundle.map'
@@ -57,3 +60,9 @@ module.exports = {
         })
     ]
 };
+
+if(MODE === 'maven'){
+	config.output.path = path.resolve(__dirname, "./../");
+}
+
+module.exports = config;

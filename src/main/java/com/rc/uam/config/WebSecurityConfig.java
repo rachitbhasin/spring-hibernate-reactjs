@@ -69,7 +69,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.exceptionHandling().authenticationEntryPoint(restAuthenticationEntryPoint).and()
 			.authorizeRequests()
 			.antMatchers("/static/**").permitAll()
-			.antMatchers("/app/**").permitAll()
+			.antMatchers("/**").permitAll()
 			.antMatchers("/auth/login").permitAll()
 			.anyRequest().authenticated().and()
 			.addFilterBefore(new TokenAuthenticationFilter(tokenHelper, jwtUserDetailsService), BasicAuthenticationFilter.class);

@@ -15,7 +15,7 @@ public class HomeController {
 	
 	private final Logger logger = Logger.getLogger(this.getClass());
 	
-	@RequestMapping(value = { "/app/*", "/app/*/*" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/*", "/*/*" }, method = RequestMethod.GET)
     public String homePage(ModelMap model) {
 		logger.info("Loading index page for SPA application");
 		

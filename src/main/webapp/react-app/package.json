@@ -4,9 +4,10 @@
   "description": "React Redux starter project",
   "main": "src/js/index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development BABEL_ENV=development webpack --env=development  --progress",
+    "start": "cross-env NODE_ENV=development BABEL_ENV=development webpack --env=development --watch --progress",
     "prod": "npm run clean && npm run build-prod",
-    "build-prod": "cross-env NODE_ENV=production BABEL_ENV=production webpack --env=production -p --progress",
+    "build:dev": "cross-env NODE_ENV=development MODE=maven BABEL_ENV=development webpack --env=development --progress",
+    "build:prod": "cross-env NODE_ENV=production BABEL_ENV=production webpack --env=production -p --progress",
     "clean": "cd ../static && del /S /Q js\\* css\\*",
     "test:clean": "rd /s /q coverage",
     "test": "jest",

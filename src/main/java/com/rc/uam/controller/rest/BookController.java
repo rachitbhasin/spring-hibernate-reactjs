@@ -1,4 +1,4 @@
-package com.rc.uam.rest;
+package com.rc.uam.controller.rest;
 
 import java.util.List;
 
@@ -47,7 +47,7 @@ public class BookController {
 
    /*---get all books---*/
    @GetMapping("/book")
-   @PreAuthorize("hasRole('USER')")
+   @PreAuthorize("hasAnyRole('ADMIN','USER')")
    public ResponseEntity<List<Book>> list() {
       List<Book> books = bookService.list();
       return ResponseEntity.ok().body(books);

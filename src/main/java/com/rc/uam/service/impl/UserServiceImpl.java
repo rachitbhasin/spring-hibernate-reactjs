@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User find(Long id) throws UamException {
+	public User get(Long id) throws UamException {
 		return userDao.get(id);
 	}
 	

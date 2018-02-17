@@ -1,4 +1,4 @@
-package com.rc.uam.rest;
+package com.rc.uam.controller.rest;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
